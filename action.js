@@ -16,8 +16,8 @@ async function action() {
 
     const event = github.context.eventName;
     core.info(`Github event: ${event}`);
-    if (event !== "pull_request" && event !== "push") {
-        core.setFailed(`Only pull request and push is supported, ${event} is not supported`);
+    if (event !== "pull_request") {
+        core.setFailed(`Only pull request is supported, ${event} is not supported`);
         return;
     }
 
