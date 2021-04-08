@@ -1,0 +1,30 @@
+name: "JaCoCo Reporting"
+description: "JaCoCo Reporting"
+
+inputs:
+  token:
+    required: true
+  path:
+    description: "Path for the JaCoCo file"
+    required: true
+  path-for-diff:
+    description: "Path for the JaCoCo file to diff against. If this is not passed in, it will do a report based on the JaCoCo file passed through 'path' argument"
+    required: false
+  deny-delta-counter-type:
+    descrption: "The type of counter that should deny the PR if it is lower than the 'path-for-diff' report. Valid values are CLASS, INSTRUCTION, LINE, COMPLEXITY, METHOD or BRANCH"
+    required: false
+  minimum-coverage-counter:
+    description: "What counter type to measure 'minimum-coverage' on. Valid values are CLASS, INSTRUCTION, LINE, COMPLEXITY, METHOD or BRANCH"
+    default: INSTRUCTION
+    required: false
+  minimum-coverage:
+    description: "Minimum coverage needed. Should be a value between 0-1. Use with 'minimum-coverage-counter'"
+    required: false
+
+runs:
+  using: "node12"
+  main: "dist/index.js"
+
+branding:
+  icon: "percent"
+  color: "green"
